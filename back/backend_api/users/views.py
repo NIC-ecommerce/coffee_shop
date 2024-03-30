@@ -14,7 +14,28 @@ from django.contrib.auth.tokens import default_token_generator
 
 
 class RegistrationView(APIView):
+    """
+        Endpoint to register a new user.
+
+        - POST /users/registration/: Register a new user.
+
+        Parameters:
+        - request: The HTTP request object containing user registration data.
+
+        Returns:
+        - Response: HTTP response indicating the success or failure of the registration attempt.
+        """
+
     def post(self, request):
+        """
+               Register a new user.
+
+               Parameters:
+               - request: The HTTP request object.
+
+               Returns:
+               - Response: HTTP response indicating the success or failure of the registration attempt.
+               """
         serializer = RegistrationSerializer(data=request.data)
         if serializer.is_valid():
             user = serializer.save()
@@ -37,7 +58,31 @@ class RegistrationView(APIView):
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 class VerifyEmailView(APIView):
+    """
+       Endpoint to verify a user's email.
+
+       - GET /users/verify_email/{uidb64}/{token}/: Verify a user's email using the provided UID and token.
+
+       Parameters:
+       - request: The HTTP request object.
+       - uidb64 (str): The base64-encoded user ID.
+       - token (str): The verification token.
+
+       Returns:
+       - Response: HTTP response indicating the success or failure of the email verification attempt.
+       """
     def get(self, request, uidb64, token):
+        """
+              Verify a user's email using the provided UID and token.
+
+              Parameters:
+              - request: The HTTP request object.
+              - uidb64 (str): The base64-encoded user ID.
+              - token (str): The verification token.
+
+              Returns:
+              - Response: HTTP response indicating the success or failure of the email verification attempt.
+              """
         try:
             uid = force_bytes(urlsafe_base64_decode(uidb64))
             user = User.objects.get(pk=uid)
@@ -53,9 +98,29 @@ class VerifyEmailView(APIView):
 
 
 class LoginView(APIView):
+    """
+      Endpoint to authenticate a user and generate JWT tokens.
+
+      - POST /users/login/: Authenticate a user and generate JWT tokens.
+
+      Parameters:
+      - request: The HTTP request object containing user login credentials.
+
+      Returns:
+      - Response: HTTP response containing the JWT tokens or an error message.
+      """
     permission_classes = [AllowAny]
 
     def post(self, request):
+        """
+              Authenticate a user and generate JWT tokens.
+
+              Parameters:
+              - request: The HTTP request object.
+
+              Returns:
+              - Response: HTTP response containing the JWT tokens or an error message.
+              """
         serializer = LoginSerializer(data=request.data)
         serializer.is_valid(raise_exception=True)
         user = serializer.validated_data['user']
@@ -74,8 +139,28 @@ class LoginView(APIView):
             return Response({"error": "Email not verified"}, status=status.HTTP_400_BAD_REQUEST)
 
 class LogoutView(APIView):
+    """
+        Endpoint to logout a user and invalidate their JWT tokens.
+
+        - POST /users/logout/: Logout a user and invalidate their JWT tokens.
+
+        Parameters:
+        - request: The HTTP request object containing the refresh token.
+
+        Returns:
+        - Response: HTTP response indicating the success or failure of the logout attempt.
+        """
     permission_classes = [IsAuthenticated]
     def post(self, request):
+        """
+               Logout a user and invalidate their JWT tokens.
+
+               Parameters:
+               - request: The HTTP request object containing the refresh token.
+
+               Returns:
+               - Response: HTTP response indicating the success or failure of the logout attempt.
+               """
         try:
             refresh_token = request.data["refresh_token"]
             token = RefreshToken(refresh_token)
