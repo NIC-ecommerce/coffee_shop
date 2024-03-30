@@ -8,9 +8,11 @@ from django.shortcuts import get_object_or_404
 from django.core import serializers as ser
 from django.db.models import Count
 from drf_spectacular.utils import extend_schema, inline_serializer
+from rest_framework.permissions import IsAuthenticated
 
 
 class CartItemAPIView(viewsets.ViewSet):
+    permission_classes = [IsAuthenticated]
     @extend_schema(request=inline_serializer(
         name="InlineFormSerializer",
         fields={
@@ -21,6 +23,7 @@ class CartItemAPIView(viewsets.ViewSet):
         },
     ), responses=CartItemSerializer)
     def create(self, request):
+
         if not Cart.objects.filter(user=request.user.id):
             Cart.objects.create(user=request.user)
         cart = Cart.objects.get(user=request.user.id)
@@ -59,6 +62,8 @@ class CartItemAPIView(viewsets.ViewSet):
     ), responses=CartItemSerializer)
 
     def partial_update(self, request, pk=None):
+
+
         if int(request.data['quantity']) <= 0:
             return Response({'error: quantity must be greater than 0'}, status=status.HTTP_400_BAD_REQUEST)
         
@@ -69,11 +74,17 @@ class CartItemAPIView(viewsets.ViewSet):
         data = CartItemSerializer(CartItem.objects.get(pk=pk))
         return Response(data.data, status=status.HTTP_200_OK)
     
+    
     def destroy(self, request, pk=None):
+        
+
         CartItem.objects.get(pk=pk).delete()
+        return Response(status=status.HTTP_200_OK)
 
 
 class CartAPIView(generics.ListAPIView):
+    permission_classes = [IsAuthenticated]
+
     queryset = CartItem.objects.all()
     serializer_class = CartItemSerializer
     def list(self, request):
