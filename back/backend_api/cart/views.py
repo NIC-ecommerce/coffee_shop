@@ -12,6 +12,7 @@ from rest_framework.permissions import IsAuthenticated
 
 
 class CartItemAPIView(viewsets.ViewSet):
+   
     permission_classes = [IsAuthenticated]
     @extend_schema(request=inline_serializer(
         name="InlineFormSerializer",
@@ -23,7 +24,23 @@ class CartItemAPIView(viewsets.ViewSet):
         },
     ), responses=CartItemSerializer)
     def create(self, request):
+        """
+        Request Body:<br>
+            quantity: Integer (required)<br>
+            is_active: Boolean (required)<br>
+            product: Integer (required)<br>
+            variations: List of Integers (optional) if you don't specify anything, pass an empty list!<br>
 
+        Example:
+        {<br>
+            "quantity": 1,<br>
+            "is_active": true,<br>
+            "product": 1,<br>
+            "variations": []<br>
+        }<br>
+
+        If successful, returns the created cart item data. If quantity is less than or equal to 0, returns an error response. If the cart item already exists, updates the quantity and returns the updated data.
+        """
         if not Cart.objects.filter(user=request.user.id):
             Cart.objects.create(user=request.user)
         cart = Cart.objects.get(user=request.user.id)
@@ -62,8 +79,19 @@ class CartItemAPIView(viewsets.ViewSet):
     ), responses=CartItemSerializer)
 
     def partial_update(self, request, pk=None):
+        """
+        PATCH /cart/items/{id}/: <br>
 
+        Request Body:<br>
+        quantity: Integer (required)<br>
 
+        Example:<br>
+        {<br>
+            "quantity": 1<br>
+        }<br>
+
+        Update the cart item’s quantity and return the updated data. If the quantity is invalid (<= 0), return a 400 Bad Request response
+        """
         if int(request.data['quantity']) <= 0:
             return Response({'error: quantity must be greater than 0'}, status=status.HTTP_400_BAD_REQUEST)
         
@@ -76,13 +104,19 @@ class CartItemAPIView(viewsets.ViewSet):
     
     
     def destroy(self, request, pk=None):
-        
-
+        """
+        DELETE /cart/items/{id}/: <br>Delete the specified cart item.
+        """
         CartItem.objects.get(pk=pk).delete()
         return Response(status=status.HTTP_200_OK)
 
 
 class CartAPIView(generics.ListAPIView):
+    """
+    Endpoints:
+    - GET /cart/: Returns a list of cart items associated with the authenticated user.
+    """
+
     permission_classes = [IsAuthenticated]
 
     queryset = CartItem.objects.all()
