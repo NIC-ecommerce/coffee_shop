@@ -4,7 +4,7 @@ import Card from "@/entities/Card/ui/Card";
 
 export default function MainPage() {
   return (
-    <div className="pt-[60px]">
+    <div className="pt-[60px] px-[90px]">
       <div className="mb-[63px]">
         <h1 className="mb-[35px] text-xl font-semibold">БЦ Есентай</h1>
         <div className="w-full">

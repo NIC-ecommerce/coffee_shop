@@ -4,7 +4,7 @@ import Button from "@/shared/ui/Button/Button";
 
 const data = [
   {text: "Каталог"},
-  {text: "Выберите обьем напитка"},
+  {text: "Выберите объем напитка"},
   {text: "Цена"},
   ]
 let a = [1,2,3,4]
