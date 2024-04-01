@@ -10,7 +10,7 @@ interface CardProps {
 
 const Card: React.FC<CardProps> = ({ image, name, description, price }) => {
   return (
-    <div className="flex flex-col w-[310px] h-fit py-[30px] px-[20px] border-[#a89e914d] border-[1px] rounded-[15px]">
+    <div className="flex flex-col w-[310px] h-fit py-[30px] px-[20px] border-lightGray border-[1px] rounded-[15px]">
       <div className="mx-auto mb-[17px]">
         <Image width={145} height={118} src={image} alt={name} />
       </div>

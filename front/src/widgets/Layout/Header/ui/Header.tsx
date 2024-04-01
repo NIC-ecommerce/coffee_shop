@@ -10,8 +10,8 @@ import Dropdown from "@/shared/ui/Dropdown/Dropdown";
 export default function Header() {
   return (
     <header className="py-[25px] shadow-md">
-      <div className="container">
-        <nav className="flex justify-between">
+      <div className="container ">
+        <nav className="flex justify-between px-[90px]">
           <Logo />
           <div className="flex gap-[25px]">
             <Dropdown
