@@ -27,3 +27,12 @@ export default function Layout({ children, type }: LayoutProps) {
     </main>
   );
 }
+
+function Page() {
+  return (
+    <>
+      <div></div>
+      <div></div>
+    </>
+  );
+}

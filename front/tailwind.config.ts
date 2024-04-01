@@ -1,11 +1,7 @@
 import type { Config } from "tailwindcss";
 
 const config: Config = {
-  content: [
-    "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
-    "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
-    "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
-  ],
+  content: ["./src/**/*.{js,ts,jsx,tsx,mdx}"],
   theme: {
     screens: {
       sm: "480px",
@@ -23,6 +19,7 @@ const config: Config = {
       colors: {
         bg: "#fff",
         primary: "#000",
+        gray: "#0000008C",
         red: "#D52626",
         green: "#144A0F",
       },
