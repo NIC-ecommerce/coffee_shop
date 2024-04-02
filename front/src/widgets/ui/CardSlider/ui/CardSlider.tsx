@@ -1,9 +1,15 @@
 "use client";
 import React from "react";
 import Slider from "react-slick";
+import Card from "@/entities/Card/ui/Card";
 
 interface CardSliderProps {
-  cards: React.ReactNode[];
+  cards: {
+    image: string;
+    title: string;
+    price: number;
+    description: string;
+  }[];
 }
 
 const CardSlider: React.FC<CardSliderProps> = ({ cards }) => {
@@ -13,13 +19,19 @@ const CardSlider: React.FC<CardSliderProps> = ({ cards }) => {
     autoplay: false,
     autoplaySpeed: 2000,
     arrows: true,
-    centerMode: true,
   };
 
   return (
     <Slider {...settings}>
       {cards.map((card, index) => (
-        <div key={index}>{card}</div>
+        <div key={index}>
+          <Card
+            image={card.image}
+            name={card.title}
+            price={card.price}
+            description={card.description}
+          />
+        </div>
       ))}
     </Slider>
   );
