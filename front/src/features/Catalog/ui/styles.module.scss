@@ -1,9 +1,14 @@
-// Стили для стрелки
+
 .arrow {
-    transition: transform 0.3s ease; // Плавное изменение поворота
+    transition: transform 0.3s ease;
   }
   
-  // Анимация для поворота стрелки при нажатии
+  
   .arrow-clicked {
-    transform: rotate(180deg); // Поворот на 180 градусов
+    transform: rotate(180deg); 
   }
+
+.selected-button {
+  background-color: #000000; 
+  color: #ffffff; 
+}  
