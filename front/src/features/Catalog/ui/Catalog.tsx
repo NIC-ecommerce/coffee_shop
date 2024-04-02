@@ -2,12 +2,6 @@ import React from "react";
 import Button from "@/shared/ui/Button/Button";
 import Arrow from "@/shared/ui/Icons/Arrow/Arrow";
 
-const data = [
-  { text: "Каталог" },
-  { text: "Выберите объем напитка" },
-  { text: "Цена" },
-];
-
 export default function Catalog() {
   return (
     <div className="Catalog w-[386px] text-[20px] font-medium rounded-[15px] border-[1px] border-solid border-lightGray mb-[116px]">

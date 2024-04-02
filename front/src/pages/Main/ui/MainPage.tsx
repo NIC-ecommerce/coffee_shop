@@ -11,6 +11,7 @@ export default function MainPage() {
         slidesToScroll={1}
         autoplay={true}
         autoplaySpeed={2000}
+        dots={true}
         className="mb-[63px]"
       >
         <div>
