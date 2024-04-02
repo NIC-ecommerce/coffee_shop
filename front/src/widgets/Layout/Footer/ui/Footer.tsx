@@ -8,7 +8,7 @@ import X from "@/shared/ui/Icons/Footer/X";
 export default function Footer() {
   return (
     <footer className="bg-black py-[35px]">
-      <div className="container flex items-center">
+      <div className="container flex items-center justify-between">
         <div className="flex gap-[50px]">
           <Gmail />
           <Inst />
@@ -16,7 +16,9 @@ export default function Footer() {
           <X />
         </div>
         <div>
-          <p>© 2013 - 2024 CUPCART. All rights reserved.</p>
+          <p className="text-link">
+            © 2013 - 2024 CUPCART. All rights reserved.
+          </p>
         </div>
       </div>
     </footer>

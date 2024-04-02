@@ -1,22 +1,32 @@
+"use client";
 import React from "react";
-import { Carousel } from "flowbite-react";
 import Card from "@/entities/Card/ui/Card";
+import Slider from "react-slick";
 
 export default function MainPage() {
   return (
     <div className="pt-[60px] px-[90px]">
-      <div className="mb-[63px]">
-        <h1 className="mb-[35px] text-xl font-semibold">БЦ Есентай</h1>
-        <div className="w-full">
-          <img
-            className="w-full"
-            src="/main/esentay.png"
-            alt="esentay address"
-          />
+      <Slider
+        slidesToShow={1}
+        slidesToScroll={1}
+        autoplay={true}
+        autoplaySpeed={2000}
+        className="mb-[63px]"
+      >
+        <div>
+          <img src="/main/esentay.png" alt="Image 1" />
         </div>
-      </div>
+        <div>
+          <img src="/main/esentay.png" alt="Image 2" />
+        </div>
+        <div>
+          <img src="/main/esentay.png" alt="Image 3" />
+        </div>
+      </Slider>
       <div>
-        <h2 className="mb-[35px] text-xl font-semibold">Популярные продукты</h2>
+        <h2 className="mb-[35px] text-2xl font-semibold">
+          Популярные продукты
+        </h2>
         <div>
           <Card
             image="/card/Latte.png"
