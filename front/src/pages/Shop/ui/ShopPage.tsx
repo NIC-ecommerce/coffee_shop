@@ -8,7 +8,7 @@ let card_position_index = [1,2,3,4]
 export default function ShopPage() {
   return (
     <div>
-      <div className="Shop__content pt-[60px] px-[90px]">
+      <div className="Shop__content pt-[60px] px-[90px] pb-[37px]">
         <Catalog/>
          {
             row_index.map(({},index) => (
