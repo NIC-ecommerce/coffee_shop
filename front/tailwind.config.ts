@@ -12,16 +12,19 @@ const config: Config = {
     },
     extend: {
       fontSize: {
-        xl: "32px",
-        lg: "24px",
+        "2xl": "32px",
+        xl: "24px",
+        lg: "16px",
         base: "14px",
       },
       colors: {
         bg: "#fff",
         primary: "#000",
+        link: "#ffffff80",
         gray: "#0000008C",
         red: "#D52626",
         green: "#144A0F",
+        lightGray: "#A89E914D",
       },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
