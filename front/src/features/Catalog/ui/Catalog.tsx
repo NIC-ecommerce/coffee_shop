@@ -2,11 +2,8 @@
 import React from "react";
 import Button from "@/shared/ui/Button/Button";
 import Arrow from "@/shared/ui/Icons/Arrow/Arrow";
-<<<<<<< HEAD
 import Input from "@/shared/ui/Input/Input";
 import styles from "./styles.module.scss";
-=======
->>>>>>> era
 
 export default function Catalog() {
   const [buttonConsist, setButtonConsist] = React.useState<boolean>(false);
@@ -28,7 +25,6 @@ export default function Catalog() {
 
   return (
     <div className="Catalog w-[386px] text-[20px] font-medium rounded-[15px] border-[1px] border-solid border-lightGray mb-[116px]">
-<<<<<<< HEAD
       <div className="title py-[18px] px-[15px] border-b border-solid border-lightGray flex relative">
         <div>
           <p>Каталог</p>
@@ -44,13 +40,6 @@ export default function Catalog() {
             <Arrow />
           </button>
         </div>
-=======
-      <div className="title pl-[18px] pt-[15px] pb-[15px] border-b border-solid border-lightGray flex gap-[235px]">
-        <p>Каталог</p>
-        {/* <button className={buttonConsist ? styles["arrow-clicked"] : styles.arrow} onClick={arrowClick}>
-          <Arrow/>
-        </button> */}
->>>>>>> era
       </div>
       {!buttonConsist && (
         <>
