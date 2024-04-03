@@ -7,11 +7,8 @@ import styles from "./styles.module.scss";
 
 export default function Catalog() {
   const [buttonConsist, setButtonConsist] = React.useState<boolean>(false);
-  const [showAdditionalText, setShowAdditionalText] =
-    React.useState<boolean>(false);
-  const [selectedButton, setSelectedButton] = React.useState<string | null>(
-    null
-  );
+  const [showAdditionalText, setShowAdditionalText] = React.useState<boolean>(false);
+  const [selectedButton, setSelectedButton] = React.useState<string | null>(null);
 
   const arrowClick = () => {
     setButtonConsist(!buttonConsist);
