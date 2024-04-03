@@ -7,8 +7,11 @@ import styles from "./styles.module.scss";
 
 export default function Catalog() {
   const [buttonConsist, setButtonConsist] = React.useState<boolean>(false);
-  const [showAdditionalText, setShowAdditionalText] = React.useState<boolean>(false);
-  const [selectedButton, setSelectedButton] = React.useState<string | null>(null);
+  const [showAdditionalText, setShowAdditionalText] =
+    React.useState<boolean>(false);
+  const [selectedButton, setSelectedButton] = React.useState<string | null>(
+    null
+  );
 
   const arrowClick = () => {
     setButtonConsist(!buttonConsist);
@@ -16,7 +19,7 @@ export default function Catalog() {
     setSelectedButton(null);
   };
 
-  const handleButtonClick = (buttonName:string) => {
+  const handleButtonClick = (buttonName: string) => {
     setSelectedButton(selectedButton === buttonName ? null : buttonName);
   };
 
@@ -25,11 +28,16 @@ export default function Catalog() {
       <div className="title py-[18px] px-[15px] border-b border-solid border-lightGray flex relative">
         <div>
           <p>Каталог</p>
-          {showAdditionalText && <p className="mt-[5px] text-base">НАПИТКИ НА ОСНОВЕ ЭСПРЕССО</p>}
+          {showAdditionalText && (
+            <p className="mt-[5px] text-base">НАПИТКИ НА ОСНОВЕ ЭСПРЕССО</p>
+          )}
         </div>
         <div className="absolute left-[335px]">
-          <button className={buttonConsist ? styles["arrow-clicked"] : styles.arrow} onClick={arrowClick}>
-            <Arrow/>
+          <button
+            className={buttonConsist ? styles["arrow-clicked"] : styles.arrow}
+            onClick={arrowClick}
+          >
+            <Arrow />
           </button>
         </div>
       </div>
@@ -57,33 +65,32 @@ export default function Catalog() {
             <div className="flex gap-[7px]">
               <Button
                 className={`w-[137px] h-[55px] py-[10px] text-base px-[10px] border-[1px] border-black rounded-[5px] ${
-                  selectedButton === 'grande' && styles["selected-button"]
+                  selectedButton === "grande" && styles["selected-button"]
                 }`}
                 label="Гранде (473мл)"
-                onClick={() => handleButtonClick('grande')}
+                onClick={() => handleButtonClick("grande")}
               />
               <Button
                 className={`w-[137px] h-[55px] py-[10px] text-base px-[10px] border-[1px] border-black rounded-[5px] ${
-                  selectedButton === 'venti' && styles["selected-button"]
+                  selectedButton === "venti" && styles["selected-button"]
                 }`}
                 label="Венти (591мл)"
-                onClick={() => handleButtonClick('venti')}
+                onClick={() => handleButtonClick("venti")}
               />
             </div>
           </div>
           <div className="title pl-[18px] pt-[15px] pb-[15px] border-b border-solid border-lightGray">
             <p className="mb-[5px]">Цена</p>
             <div className="flex gap-[54px]">
-                <Input
-                  className="w-[96px] h-[30px] py-[5px] px-[10px] text-base border-[1px] border-black rounded-[5px]"
-                  placeholder="от"
-                />
-                <Input
-                  className="w-[116px] h-[30px] py-[5px] px-[10px] text-base border-[1px] border-black rounded-[5px]"
-                  placeholder="до 5000"
-                />
+              <Input
+                className="w-[96px] h-[30px] py-[5px] px-[10px] text-base border-[1px] border-black rounded-[5px]"
+                placeholder="от"
+              />
+              <Input
+                className="w-[116px] h-[30px] py-[5px] px-[10px] text-base border-[1px] border-black rounded-[5px]"
+                placeholder="до 5000"
+              />
             </div>
-            
           </div>
 
           <div className="title pl-[18px] pt-[15px] pb-[15px]">
