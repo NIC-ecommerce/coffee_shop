@@ -8,6 +8,8 @@ import Input from "@/shared/ui/Input/Input";
 import Dropdown from "@/shared/ui/Dropdown/Dropdown";
 import Link from "next/link";
 
+import useSession from "@/shared/hooks/useSession";
+
 let option_index_pos = [
   { text: "ПРИБОРЫ" },
   { text: "НОВИНКИ" },
@@ -22,7 +24,17 @@ let option_index_pos = [
   { text: "ДОПОЛНИТЕЛЬНО" },
 ];
 
-export default function Header() {
+interface HeaderProps {
+  children?: React.ReactNode;
+  onClick?: any;
+  type?: "login" | "profile";
+}
+
+export default function Header({ children, type, onClick }: HeaderProps) {
+  const session = useSession();
+
+  console.log(session);
+
   return (
     <header className="py-[25px] shadow-md">
       <div className="container ">
@@ -48,20 +60,38 @@ export default function Header() {
               />
             </Link>
           </div>
-          <div className="flex gap-[25px]">
-            <Link href={`/routs/register`}>
-              <Button
-                className="py-[10px] font-semibold px-[15px] border-[1px] border-black rounded-[5px]"
-                label="Регистрация"
-              />
-            </Link>
-            <Link href={`/routs/auth`}>
-              <Button
-                className="py-[10px] bg-black text-white font-semibold px-[15px] border-[1px] border-black rounded-[5px]"
-                label="Войти"
-              />
-            </Link>
-          </div>
+
+          {session?.isAuthorized ? (
+            <div className="flex gap-[25px]">
+              <Link href={`/routs/register`}>
+                <Button
+                  className="py-[10px] font-semibold px-[15px] border-[1px] border-black rounded-[5px]"
+                  label="Регистрация"
+                />
+              </Link>
+              <Link href={`/routs/auth`}>
+                <Button
+                  className="py-[10px] bg-black text-white font-semibold px-[15px] border-[1px] border-black rounded-[5px]"
+                  label="Войти"
+                />
+              </Link>
+            </div>
+          ) : (
+            <div className="flex gap-[25px]">
+              <Link href={`/routs/register`}>
+                <Button
+                  className="py-[10px] font-semibold px-[15px] border-[1px] border-black rounded-[5px]"
+                  label="Корзина"
+                />
+              </Link>
+              <Link href={`/routs/auth`}>
+                <Button
+                  className="py-[10px] bg-black text-white font-semibold px-[15px] border-[1px] border-black rounded-[5px]"
+                  label="Выйти"
+                />
+              </Link>
+            </div>
+          )}
         </nav>
       </div>
     </header>

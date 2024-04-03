@@ -1,5 +1,6 @@
 import React from "react";
 import Image from "next/image";
+import Link from "next/link";
 
 interface CardProps {
   image: string;
@@ -10,10 +11,13 @@ interface CardProps {
 
 const Card: React.FC<CardProps> = ({ image, name, description, price }) => {
   return (
-    <div className="flex flex-col w-[310px] h-fit py-[30px] px-[20px] border-lightGray border-[1px] rounded-[15px]">
-      <div className="mx-auto mb-[17px]">
-        <Image width={145} height={118} src={image} alt={name} />
-      </div>
+    <div className="flex flex-col w-[310px] h-[400] py-[30px] px-[20px] border-lightGray border-[1px] rounded-[15px]">
+      <Link href={`/routs/basket`}>
+        <div className="mx-auto mb-[20px]">
+          <img src={image} alt={name} />
+        </div>
+      </Link>
+
       <div className="flex flex-col gap-[10px] w-[270px] mb-[20px]">
         <p className="text-lg2 text-primary text-lg font-semibold">{name}</p>
         <p className="text-sm font-700 text-gray">{description}</p>

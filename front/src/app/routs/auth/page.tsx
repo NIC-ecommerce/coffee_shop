@@ -1,11 +1,11 @@
-import AuthPage from "@/pages/Auth/ui/AuthPage";
+import LoginForm from "@/pages/Auth/ui/AuthPage";
 import Layout from "@/widgets/Layout/Layout";
 
-export default function Basket() {
+export default function Auth() {
   return (
     <Layout type="login">
       <div className="container">
-        <AuthPage />
+        <LoginForm />
       </div>
     </Layout>
   );

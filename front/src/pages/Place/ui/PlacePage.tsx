@@ -9,23 +9,23 @@ import Button from "@/shared/ui/Button/Button";
 import Link from "next/link";
 import { CardItems, SliderItems } from "./props";
 
-import axios from "axios";
+// import axios from "axios";
 
 interface ProductData {
-  name: string;
+  product_name: string;
   price: number;
   image: string;
 }
 
-const ProductDisplay: React.FC<{ product: ProductData }> = ({ product }) => {
-  return (
-    <div>
-      <h2>{product.name}</h2>
-      <p>Price: ${product.price}</p>
-      <img src={product.image} alt={product.name} />
-    </div>
-  );
-};
+// const ProductDisplay: React.FC<{ product: ProductData }> = ({ product }) => {
+//   return (
+//     <div>
+//       <h2>Name: {product.product_name}</h2>
+//       <p>Price: {product.price}</p>
+//       <img src={product.image} alt={product.product_name} />
+//     </div>
+//   );
+// };
 
 const PlacePage = () => {
   const sliderSettings = {
@@ -37,28 +37,30 @@ const PlacePage = () => {
     className: "mb-[63px]",
   };
 
-  const [product, setProduct] = React.useState<ProductData | null>(null);
-  const [error, setError] = React.useState<string | null>(null);
+  //   const [product, setProduct] = React.useState<ProductData | null>(null);
+  //   const [error, setError] = React.useState<string | null>(null);
 
-  const fetchProduct = async () => {
-    try {
-      const response = await axios.get<ProductData>(
-        "http://127.0.0.1:8000/store/products/"
-      );
-      setProduct(response.data);
-      setError(null);
-    } catch (error) {
-      setError("Failed to fetch product.");
-    }
-  };
+  //   const fetchProduct = async () => {
+  //     try {
+  //       const response = await axios.get<ProductData>(
+  //         "http://127.0.0.1:8000/store/products/"
+  //       );
+  //       setProduct(response.data);
+  //       console.log(product);
+  //       setError(null);
+  //     } catch (error) {
+  //       setError("Failed to fetch product.");
+  //     }
+  //   };
   return (
     <div className="py-[60px] px-[90px]">
+      {/* //{" "}
       <div>
-        <button onClick={fetchProduct}>Fetch Product</button>
-        {error && <p>{error}</p>}
-        {product && <ProductDisplay product={product} />}
-      </div>
-
+        // <button onClick={fetchProduct}>Fetch Product</button>
+        // {error && <p>{error}</p>}
+        // {product && <ProductDisplay product={product} />}
+        //{" "}
+      </div> */}
       <Slider {...sliderSettings}>
         {SliderItems.map((item, index) => (
           <div className="rounded-[20px]" key={index}>
