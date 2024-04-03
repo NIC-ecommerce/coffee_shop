@@ -13,20 +13,20 @@ interface CardData {
 const CardSlider: React.FC = () => {
   const [cards, setCards] = React.useState<CardData[]>([]);
 
-  React.useEffect(() => {
-    const fetchCards = async () => {
-      try {
-        const response = await axios.get<CardData[]>(
-          "http://localhost:8000/store/products"
-        );
-        setCards(response.data);
-      } catch (error) {
-        console.error("Ошибка при загрузке данных:", error);
-      }
-    };
+  // React.useEffect(() => {
+  //   const fetchCards = async () => {
+  //     try {
+  //       const response = await axios.get<CardData[]>(
+  //         "http://localhost:8000/store/products"
+  //       );
+  //       setCards(response.data);
+  //     } catch (error) {
+  //       console.error("Ошибка при загрузке данных:", error);
+  //     }
+  //   };
 
-    fetchCards();
-  }, []);
+  //   fetchCards();
+  // }, []);
 
   const settings = {
     slidesToShow: 2.9,
