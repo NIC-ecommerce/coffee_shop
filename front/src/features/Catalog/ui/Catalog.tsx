@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import React from "react";
 import Button from "@/shared/ui/Button/Button";
 import Arrow from "@/shared/ui/Icons/Arrow/Arrow";
