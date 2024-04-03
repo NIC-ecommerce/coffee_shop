@@ -6,37 +6,36 @@ import React, {useState} from "react";
 export default function BasketPage() {
 
   const [quantity, setQuantity] =useState(1);
-  const handleQuantityChange = (newQuantity)=>{
+  const handleQuantityChange = (newQuantity: any)=>{
     setQuantity(newQuantity);
   };
 
 
-  const[sizeType, setSizeType] = useState('')
-  const[beanType, setBeanType] = useState('');
-  const[milkType, setMilkType] = useState('');
-  const[syrupType, setSyrupType] = useState('');
-  const [quantity_of_select, setQuantity_of_select] = useState(1);
+  const[sizeType, setSizeType] = useState<string>('')
+  const[beanType, setBeanType] = useState<string>('');
+  const[milkType, setMilkType] = useState<string>('');
+  const[syrupType, setSyrupType] = useState<string>('');
 
 
-  const OptionSection =({ title, additionalTitle, options, selectedOption, setSelectedOption}) =>{
+  const OptionSection =({ title, additionalTitle, options, selectedOption, setSelectedOption} : any) =>{
 
     return(
       <div>
         {/* <div className="" style={{ fontSize: '24px', fontWeight: '500', marginBottom: '5px' }}>{title}</div> */}
         {title && ( 
-        <div className="border-b border-[#A89E914D]" style={{  fontSize: '24px', fontWeight: '500', marginBottom: '8px',  marginTop: '25px' }}>{title}</div>
+        <div className="" style={{  fontSize: '24px', fontWeight: '500', marginBottom: '8px',  marginTop: '25px' }}>{title}</div>
       )}
 
         <div className="text-black text-opacity-70 font-inter" style={{ fontSize: '14px', fontWeight: '500', marginBottom: '20px'}}>{additionalTitle}</div>
-        {options.map((option)=>(
-          <label key ={option.label} className="flex items-center mb-1"style={{ fontSize: '16px', fontWeight: '500', marginBottom: '20px' }}>
+        {options.map((option: any)=>(
+          <label key ={option.label} className="flex items-center "style={{ fontSize: '16px', fontWeight: '500', marginBottom: '15px' }}>
             <input type="radio"
             name="{title}"
-            title={`${additionalTitle}`}
+            title="{additionalTitle}"
             value={option.label}
-            checked = {selectedOption === option.label}
+            checked = {selectedOption == option.label}
             onChange={()=>setSelectedOption(option.label)}
-            className="mr-2" />
+            className="mr-[10px]" />
             {option.label} {option.price && `(+${option.price} KZT)`}
           </label>
         ))}
@@ -74,10 +73,10 @@ export default function BasketPage() {
     {label: 'Сахарный ', price:350}
   ]
 
-  const handleSizeOption = (newSize) => setSizeType(newSize);
-  const handleBeanChange = (newBean) => setBeanType(newBean);
-  const handleMilkChange = (newMilk) => setMilkType(newMilk);
-  const handleSyrupChange = (newSyrup) => setSyrupType(newSyrup);
+  const handleSizeOption = (newSize: any) => setSizeType(newSize);
+  const handleBeanChange = (newBean: any) => setBeanType(newBean);
+  const handleMilkChange = (newMilk: any) => setMilkType(newMilk);
+  const handleSyrupChange = (newSyrup: any) => setSyrupType(newSyrup);
 
 
   return(
@@ -161,21 +160,24 @@ export default function BasketPage() {
 
   );
  
+
 };
 
 
-const QuanitySelector = ({initialQuanity = 1, onQuantityChange}) => {
+
+
+const QuanitySelector = ({initialQuanity = 1, onQuantityChange}: any) => {
   const  [quantity, setQuantity] = useState(initialQuanity);
 
   const decreaseQuantity = () =>{
-    setQuantity((prev) =>{
+    setQuantity((prev : any) =>{
       const newQuantity = prev - 1> 0 ? prev - 1:1;
       onQuantityChange(newQuantity);
       return newQuantity;
     });
   };
   const increaseQuantity = ()=>{
-    setQuantity((prev) =>{
+    setQuantity((prev: any) =>{
       const newQuantity = prev +1;
       onQuantityChange(newQuantity);
       return newQuantity;
@@ -200,5 +202,4 @@ const QuanitySelector = ({initialQuanity = 1, onQuantityChange}) => {
       </button>
     </div>
   )
-};
-
+}
