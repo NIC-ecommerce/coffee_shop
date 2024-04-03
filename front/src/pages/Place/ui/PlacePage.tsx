@@ -42,7 +42,7 @@ const PlacePage = () => {
   const fetchProduct = async () => {
     try {
       const response = await axios.get<ProductData>(
-        "http://localhost:8000/store/products"
+        "http://127.0.0.1:8000/store/products/"
       );
       setProduct(response.data);
       setError(null);

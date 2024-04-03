@@ -17,7 +17,7 @@ const CardSlider: React.FC = () => {
   //   const fetchCards = async () => {
   //     try {
   //       const response = await axios.get<CardData[]>(
-  //         "http://localhost:8000/store/products"
+  //         "http://127.0.0.1:8000/store/products/"
   //       );
   //       setCards(response.data);
   //     } catch (error) {
