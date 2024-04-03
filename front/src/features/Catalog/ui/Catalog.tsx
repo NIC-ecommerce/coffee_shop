@@ -14,9 +14,9 @@ export default function Catalog() {
     <div className="Catalog w-[386px] text-[20px] font-medium rounded-[15px] border-[1px] border-solid border-lightGray mb-[116px]">
       <div className="title pl-[18px] pt-[15px] pb-[15px] border-b border-solid border-lightGray flex gap-[235px]">
         <p>Каталог</p>
-        <button className={buttonConsist ? styles["arrow-clicked"] : styles.arrow} onClick={arrowClick}>
+        {/* <button className={buttonConsist ? styles["arrow-clicked"] : styles.arrow} onClick={arrowClick}>
           <Arrow/>
-        </button>
+        </button> */}
       </div>
       {!buttonConsist && (
         <>
