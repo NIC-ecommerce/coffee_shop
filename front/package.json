@@ -9,8 +9,12 @@
     "lint": "next lint"
   },
   "dependencies": {
+<<<<<<< HEAD
     "@reduxjs/toolkit": "^2.2.3",
     "axios": "^1.6.8",
+=======
+    "classnames": "^2.5.1",
+>>>>>>> era
     "flowbite-react": "^0.7.6",
     "json5": "^2.2.3",
     "next": "14.1.4",
