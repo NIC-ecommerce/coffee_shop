@@ -1,18 +1,33 @@
-"use client";
 import React from "react";
 import Slider from "react-slick";
+import axios from "axios";
 import Card from "@/entities/Card/ui/Card";
 
-interface CardSliderProps {
-  cards: {
-    image: string;
-    title: string;
-    price: number;
-    description: string;
-  }[];
+interface CardData {
+  image: string;
+  title: string;
+  price: number;
+  description: string;
 }
 
-const CardSlider: React.FC<CardSliderProps> = ({ cards }) => {
+const CardSlider: React.FC = () => {
+  const [cards, setCards] = React.useState<CardData[]>([]);
+
+  React.useEffect(() => {
+    const fetchCards = async () => {
+      try {
+        const response = await axios.get<CardData[]>(
+          "http://localhost:8000/store/products"
+        );
+        setCards(response.data);
+      } catch (error) {
+        console.error("Ошибка при загрузке данных:", error);
+      }
+    };
+
+    fetchCards();
+  }, []);
+
   const settings = {
     slidesToShow: 2.9,
     slidesToScroll: 3,

@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { PointerEventHandler } from "react";
 import Card from "@/entities/Card/ui/Card";
 import Slider from "react-slick";
 import CardSlider from "@/widgets/ui/CardSlider/ui/CardSlider";
@@ -7,6 +7,15 @@ import Arrow from "@/shared/ui/Icons/Arrow/Arrow";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import { CardItems, SliderItems } from "./props";
+
+import axios from "axios";
+
+interface MyData {
+  // Определите поля, которые ожидаете получить от бэкенда
+  id: number;
+  name: string;
+  // Другие поля
+}
 
 const MainPage = () => {
   const sliderSettings = {
@@ -18,40 +27,8 @@ const MainPage = () => {
     className: "mb-[63px]",
   };
 
-  const [users, setUsers] = React.useState<User[]>([]);
-
-  interface User {
-    id: number;
-    username: string;
-  }
-
-  React.useEffect(() => {
-    async function fetchUsers() {
-      try {
-        const response = await fetch("/store/products");
-        if (!response.ok) {
-          throw new Error("Ошибка при загрузке данных");
-        }
-        const userData: User[] = await response.json();
-        setUsers(userData);
-      } catch (error) {
-        console.error("Произошла ошибка:", error);
-      }
-    }
-
-    fetchUsers();
-  }, []);
   return (
     <div className="py-[60px] px-[90px]">
-      <div>
-        <h2>Список пользователей</h2>
-        <ul>
-          {users.map((user) => (
-            <li key={user.id}>{user.username}</li> // Предполагается, что каждый пользователь имеет уникальный идентификатор и имя пользователя
-          ))}
-        </ul>
-      </div>
-
       <Slider {...sliderSettings}>
         {SliderItems.map((item, index) => (
           <div className="rounded-[20px]" key={index}>
@@ -70,13 +47,13 @@ const MainPage = () => {
         </div>
 
         <div>
-          <CardSlider cards={CardItems} />
+          <CardSlider />
         </div>
       </div>
       <div className="mt-[63px]">
         <h2 className="mb-[35px] text-2xl font-semibold">Новинки и акции</h2>
         <div>
-          <CardSlider cards={CardItems} />
+          <CardSlider />
         </div>
       </div>
     </div>
