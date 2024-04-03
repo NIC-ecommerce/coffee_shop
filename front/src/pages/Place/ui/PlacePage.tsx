@@ -5,6 +5,7 @@ import Slider from "react-slick";
 import CardSlider from "@/widgets/ui/CardSlider/ui/CardSlider";
 import Arrow from "@/shared/ui/Icons/Arrow/Arrow";
 import Image from "next/image";
+import Button from "@/shared/ui/Button/Button";
 import { useRouter } from "next/router";
 import { CardItems, SliderItems } from "./props";
 
@@ -27,6 +28,12 @@ const ProductDisplay: React.FC<{ product: ProductData }> = ({ product }) => {
 };
 
 const PlacePage = () => {
+  const router = useRouter();
+
+  const handleClick = () => {
+    router.push("/routs/shop");
+  };
+
   const sliderSettings = {
     slidesToShow: 1,
     slidesToScroll: 1,
@@ -70,7 +77,10 @@ const PlacePage = () => {
           <h2 className="mb-[35px] text-2xl font-semibold">
             Популярные продукты
           </h2>
-          <div className="relative transform -rotate-90 cursor-pointer w-[40px] h-[40px] border rounded-full bg-gray-200 flex justify-center items-center">
+          <div
+            onClick={handleClick}
+            className="relative transform -rotate-90 cursor-pointer w-[40px] h-[40px] border rounded-full bg-gray-200 flex justify-center items-center"
+          >
             <Arrow />
           </div>
         </div>
