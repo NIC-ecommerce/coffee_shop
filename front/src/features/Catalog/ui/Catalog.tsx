@@ -2,7 +2,6 @@
 import React from "react";
 import Button from "@/shared/ui/Button/Button";
 import Arrow from "@/shared/ui/Icons/Arrow/Arrow";
-import styles from "./styles.module.scss";
 
 export default function Catalog() {
   const [buttonConsist, setButtonConsist] = React.useState<boolean>(false);
