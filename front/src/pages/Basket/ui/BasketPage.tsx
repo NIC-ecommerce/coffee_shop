@@ -23,7 +23,7 @@ export default function BasketPage() {
       <div>
         {/* <div className="" style={{ fontSize: '24px', fontWeight: '500', marginBottom: '5px' }}>{title}</div> */}
         {title && ( 
-        <div className="" style={{  fontSize: '24px', fontWeight: '500', marginBottom: '8px',  marginTop: '25px' }}>{title}</div>
+        <div className="" style={{  fontSize: '24px', fontWeight: '500', marginBottom: '8px',  marginTop: '7px' }}>{title}</div>
       )}
 
         <div className="text-black text-opacity-70 font-inter" style={{ fontSize: '14px', fontWeight: '500', marginBottom: '20px'}}>{additionalTitle}</div>
@@ -80,7 +80,7 @@ export default function BasketPage() {
 
 
   return(
-    <div className="container mx-auto p-4 flex justify-center mt-[60px] gap-[70px]">
+    <div className="container mx-auto p-4 flex justify-between mt-[60px]">
         <div className="">
         <div className="review  flex] flex-col">
           <div className="inline-flex flex-col items-center p-[30px_20px] gap-4 rounded-[15px] border border-[#rgba-value] bg-white w-[311px] h-[362px] mx-auto">
@@ -115,45 +115,45 @@ export default function BasketPage() {
         </div>
         </div>
 
-        <div className=" flex justify-center w-[891px] h-[600] gap-[45px]">
+        <div className=" flex  w-[891px] h-[600] gap-[45px]">
             <div className="left-side flex flex-col gap-[15px]">
-            <OptionSection
+              <div className="border-b" style={{borderColor: "gray"}}><OptionSection
                 title="Выберите объем напитка"
                 additionalTitle = "Выберите до 1 дополнительных позиций"
                 options={sizeOptions}
                 selectedOption={sizeType}
                 setSelectedOption={handleSizeOption}
-            />
-            <OptionSection
+            /></div>
+            <div className="border-b" style={{borderColor: "gray"}}><OptionSection
                 title="Выберите зерно"
                 additionalTitle = "Выберите до 1 дополнительных позиций"
                 options={beatOptions}
                 selectedOption={beanType}
                 setSelectedOption={handleBeanChange}
-            />
-            <OptionSection
-               title=""
-               additionalTitle="Выберите до 1 дополнительных позиций"
+            /></div>
+            <div className="border-b" style={{borderColor: "gray"}}><OptionSection
+                title=""
+                additionalTitle="Выберите до 1 дополнительных позиций"
                 options={beatOptions}
                 selectedOption={beanType}
                 setSelectedOption={handleBeanChange}
-            />
+            /></div>
               </div>
-            <div className="right-side flex flex-col gap-[15px]">
-            <OptionSection
+            <div className="right-side flex flex-col   justify-between">
+              <div className="border-b" style={{borderColor: "gray"}}><OptionSection
                title="Выберите молоко"
                additionalTitle="Выберите до 1 дополнительных позиций"
                 options={milkOptions}
                 selectedOption={milkType}
                 setSelectedOption={handleMilkChange}
-            />
-            <OptionSection
+            /></div>
+            <div className="border-b" style={{borderColor: "gray"}}><OptionSection
                 title="Выберите сироп"
                 additionalTitle="Выберите до 1 дополнительных позиций"
                 options={syrupOptions}
                 selectedOption={syrupType}
                 setSelectedOption={handleSyrupChange}
-            />
+            /></div>
           </div>
       </div>
     </div>
@@ -192,7 +192,7 @@ const QuanitySelector = ({initialQuanity = 1, onQuantityChange}: any) => {
         -
       </button>
       <input type="text"
-      className="text-center w-[13px] h-[24px] text-[20px] font-[600]  " 
+      className="text-center w-[24px] h-[24px] text-[20px] font-[600]  " 
       value = {quantity}
       />
       <button
