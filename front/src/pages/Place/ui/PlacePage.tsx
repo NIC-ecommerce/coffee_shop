@@ -10,12 +10,21 @@ import { CardItems, SliderItems } from "./props";
 
 import axios from "axios";
 
-interface MyData {
-  // Определите поля, которые ожидаете получить от бэкенда
-  id: number;
+interface ProductData {
   name: string;
-  // Другие поля
+  price: number;
+  image: string;
 }
+
+const ProductDisplay: React.FC<{ product: ProductData }> = ({ product }) => {
+  return (
+    <div>
+      <h2>{product.name}</h2>
+      <p>Price: ${product.price}</p>
+      <img src={product.image} alt={product.name} />
+    </div>
+  );
+};
 
 const PlacePage = () => {
   const sliderSettings = {
@@ -27,8 +36,28 @@ const PlacePage = () => {
     className: "mb-[63px]",
   };
 
+  const [product, setProduct] = React.useState<ProductData | null>(null);
+  const [error, setError] = React.useState<string | null>(null);
+
+  const fetchProduct = async () => {
+    try {
+      const response = await axios.get<ProductData>(
+        "http://localhost:8000/store/products"
+      );
+      setProduct(response.data);
+      setError(null);
+    } catch (error) {
+      setError("Failed to fetch product.");
+    }
+  };
   return (
     <div className="py-[60px] px-[90px]">
+      <div>
+        <button onClick={fetchProduct}>Fetch Product</button>
+        {error && <p>{error}</p>}
+        {product && <ProductDisplay product={product} />}
+      </div>
+
       <Slider {...sliderSettings}>
         {SliderItems.map((item, index) => (
           <div className="rounded-[20px]" key={index}>
