@@ -106,27 +106,7 @@ export default function MainPage() {
               </div>
           </div>
         </div>
-      <div className={` ${ 
-                styles["BLOCK-5__bg-image"]
-                }`}>
-        <div className="BLOCK-5__content">
-          <div className="BLOCK-5__title">
-            <p>
-              Стань частью нашего комьюнити !
-            </p>
-            <p>
-              Присоединяйтесь к нам в этом увлекательном путешествии в мир настоящего кофе. Заказывай его часто и со скидкой !
-            </p>
-            <div>
-            <Button
-                  className="w-[323px] h-[64px] px-[50px] py-[10px]  text-base font-medium border-[1px] border-black rounded-[5px]"
-                  label="Зарегистрироваться"
-                  labelStyle="text-[20px]"
-                />
-            </div>
-          </div>
-        </div>
-      </div>
+      
     </div>
   );
 }
